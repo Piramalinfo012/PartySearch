@@ -57,7 +57,7 @@ async function fetchSheetData(sheetName: string) {
   try {
     console.log('Fetching data from sheet:', sheetName);
     const response = await fetch(
-      `https://script.google.com/macros/s/AKfycbyYNIuF7JDFSNlD-rV2t_KDsipkgqvPDLCeR5ut7R_eq5BchO7XiRbx91x-366ggmN-/exec?sheet=${encodeURIComponent(sheetName)}`
+      `https://script.google.com/macros/s/AKfycbyzGAhuT63tIIgyKKu_nZz_EjUpUSonMw6fFLjzRdnb_Te7ReYBaV36A89UknMYGRrW/exec?sheet=${encodeURIComponent(sheetName)}`
     );
     
     if (!response.ok) {
