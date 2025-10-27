@@ -236,8 +236,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50">
-      <div className="container mx-auto px-4 py-8 md:py-12">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50 flex flex-col">
+      <div className="container mx-auto px-4 py-8 md:py-12 flex-1">
         <div className="text-center mb-8 md:mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="bg-blue-600 p-3 rounded-2xl shadow-lg">
@@ -297,20 +297,6 @@ function App() {
 
           {!isSearching && results.length > 0 && (
             <>
-              {/* <div className="max-w-4xl mx-auto mb-6">
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 text-center">
-                  <p className="text-blue-900 font-semibold">
-                    Found {results.length} {results.length === 1 ? 'company' : 'companies'} matching "{searchTerm}"
-                  </p>
-                </div>
-              </div> */}
-
-              {/* <ActionButtons
-                onClear={handleClear}
-                onDownloadPDF={handleDownloadPDF}
-                hasResults={results.length > 0}
-              /> */}
-
               <div className="max-w-4xl mx-auto space-y-6">
                 {results.map((company) => (
                   <CompanyCard key={company.id} company={company} />
@@ -327,8 +313,9 @@ function App() {
         </div>
       </div>
 
-      <footer className="mt-16 py-8 text-center text-gray-500 text-sm border-t-2 border-gray-250">
-        <p> Powered by Botivate</p>
+      {/* Fixed Footer at the bottom */}
+      <footer className="mt-auto py-4 text-center text-gray-500 text-sm border-t-2 border-gray-200 bg-white">
+        <p>Powered by Botivate</p>
       </footer>
     </div>
   );
