@@ -40,7 +40,8 @@ const Sidebar = () => {
   const navItems = [
     { name: 'Party Search', path: '/party-search' },
     { name: 'Pending Order', path: '/pending-order' },
-    { name: 'Pending Stage', path: '/pending-stage' }
+    { name: 'Pending Stage', path: '/pending-stage' },
+    { name: 'Calendar', path: '/calendar' }
   ];
 
   // Check if current path is active

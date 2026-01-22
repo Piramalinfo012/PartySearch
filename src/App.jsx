@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard';
 import PendingOrder from './pages/admin/PendingOrder';
 import PendingStage from './pages/admin/PendingStage';
+import Calendar from './pages/admin/Calendar';
 import Sidebar from './layouts/Sidebar';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="party-search" element={<Dashboard />} />
         <Route path="pending-order" element={<PendingOrder />} />
         <Route path="pending-stage" element={<PendingStage />} />
+        <Route path="calendar" element={<Calendar />} />
       </Route>
       
       {/* Redirect any unknown routes to party-search */}
