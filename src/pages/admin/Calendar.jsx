@@ -37,7 +37,7 @@ const Calendar = () => {
   const fetchCalendarData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${SCRIPT_URL}?sheet=calander`);
+      const response = await fetch(`${SCRIPT_URL}?sheet=Calendar`);
       const result = await response.json();
 
       if (result.success && result.data && result.data.length > 1) {
