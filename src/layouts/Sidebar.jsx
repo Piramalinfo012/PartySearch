@@ -27,7 +27,7 @@ const Sidebar = () => {
         setMobileMenuOpen(false);
       }
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -55,6 +55,7 @@ const Sidebar = () => {
           <div className="flex items-center justify-between h-14">
             {/* Logo/Brand - Left */}
             <div className="flex items-center gap-3">
+              <img src="/PPPL.png" alt="PPPL Logo" className="h-8 w-auto object-contain" />
               <span className="text-lg sm:text-xl font-bold" style={{ color: '#1e40af' }}>
                 Party Search System
               </span>
@@ -66,11 +67,10 @@ const Sidebar = () => {
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                    isActive(item.path)
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${isActive(item.path)
                       ? 'text-white shadow-md'
                       : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                    }`}
                   style={isActive(item.path) ? { backgroundColor: '#1e40af' } : {}}
                 >
                   {item.name}
@@ -79,7 +79,7 @@ const Sidebar = () => {
             </nav>
 
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               onClick={toggleMobileMenu}
               className="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               style={{ color: '#1e40af' }}
@@ -96,11 +96,10 @@ const Sidebar = () => {
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className={`w-full text-left px-4 py-2 rounded-lg font-medium transition-all ${
-                    isActive(item.path)
+                  className={`w-full text-left px-4 py-2 rounded-lg font-medium transition-all ${isActive(item.path)
                       ? 'text-white shadow-md'
                       : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                    }`}
                   style={isActive(item.path) ? { backgroundColor: '#1e40af' } : {}}
                 >
                   {item.name}
@@ -123,7 +122,7 @@ const Sidebar = () => {
 
       {/* Mobile Overlay */}
       {mobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-20 sm:hidden backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         ></div>
