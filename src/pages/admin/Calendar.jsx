@@ -11,7 +11,8 @@ import {
     Clock,
     PartyPopper,
     Filter,
-    Download
+    Download,
+    User
 } from 'lucide-react';
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzGAhuT63tIIgyKKu_nZz_EjUpUSonMw6fFLjzRdnb_Te7ReYBaV36A89UknMYGRrW/exec";
@@ -49,11 +50,12 @@ const Calendar = () => {
 
                 rows.forEach((row, rowIndex) => {
                     const partyName = row[0];
-                    const mobileNumber = row[1]; // Capture Mobile Number from 2nd column
+                    const personName = row[1]; // Capture Person Name from 2nd column
+                    const mobileNumber = row[2]; // Capture Mobile Number from 3rd column
                     if (!partyName) return;
 
-                    // Start from colIndex 2 because 0 is Party Name, 1 is Mobile Number
-                    for (let colIndex = 2; colIndex < headers.length; colIndex++) {
+                    // Start from colIndex 3 because 0 is Party Name, 1 is Person Name, 2 is Mobile Number
+                    for (let colIndex = 3; colIndex < headers.length; colIndex++) {
                         const cellValue = row[colIndex];
                         const eventName = headers[colIndex];
 
@@ -77,6 +79,7 @@ const Calendar = () => {
                                 newEvents.push({
                                     id: `${rowIndex}-${colIndex}`,
                                     partyName: partyName,
+                                    personName: personName, // Add person name to event object
                                     mobileNumber: mobileNumber, // Add mobile number to event object
                                     eventName: eventName,
                                     date: parsedDate,
@@ -248,11 +251,12 @@ const Calendar = () => {
         if (!selectedFestival) return;
 
         // Header row
-        const headers = ['Party Name', 'Mobile Number', 'Festival Name', 'Date'];
+        const headers = ['Party Name', 'Person Name', 'Mobile Number', 'Festival Name', 'Date'];
 
         // Data rows
         const rows = selectedFestival.events.map(event => [
             event.partyName,
+            event.personName || '',
             event.mobileNumber || '',
             event.eventName,
             `${event.date.getDate()}/${event.date.getMonth() + 1}/${event.date.getFullYear()}`
@@ -383,6 +387,12 @@ const Calendar = () => {
                                 {selectedDate.events.map((event, idx) => (
                                     <div key={idx} className="bg-white border border-gray-100 rounded-xl p-3 shadow-sm">
                                         <h3 className="font-bold text-gray-900">{event.partyName}</h3>
+                                        {event.personName && (
+                                            <div className="flex items-center gap-1.5 text-xs text-gray-600 font-medium my-0.5">
+                                                <User className="w-3 h-3" />
+                                                <span>{event.personName}</span>
+                                            </div>
+                                        )}
                                         {event.mobileNumber && (
                                             <p className="text-xs text-gray-500 mb-1">{event.mobileNumber}</p>
                                         )}
@@ -429,6 +439,12 @@ const Calendar = () => {
                                     <div key={idx} className="flex items-center justify-between bg-white border border-gray-100 rounded-xl p-3 shadow-sm hover:bg-gray-50 transition-colors">
                                         <div>
                                             <h3 className="font-bold text-gray-900 text-sm">{event.partyName}</h3>
+                                            {event.personName && (
+                                                <div className="flex items-center gap-1.5 text-xs text-gray-600 font-medium mt-0.5">
+                                                    <User className="w-3 h-3" />
+                                                    <span>{event.personName}</span>
+                                                </div>
+                                            )}
                                             {event.mobileNumber && (
                                                 <p className="text-xs text-gray-500">{event.mobileNumber}</p>
                                             )}
